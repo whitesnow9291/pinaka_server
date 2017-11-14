@@ -45,11 +45,12 @@ var mongodb = require('mongoose');
 var Interests = require('./models/interest');
 var InterestValues = require('./constants/interests');
 
-mongodb.connect(mDBConfig.dev_url, { useMongoClient: true }).then(function () {
+mongodb.connect(mDBConfig.pub_url, { useMongoClient: true }).then(function () {
     console.log("mongodb is connected...");
     
     Interests.find({}, function (err, interests) {
-        if (interests.length == 0) {
+        
+        if (interests==undefined) {
             console.log("init interests collection...");
             //init interests collections
             InterestValues.map(function(value, index){

@@ -43,7 +43,7 @@ router.get('/profile', function (req, res) {
 router.post('/login', function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
-
+    console.log(email+password)
     if (email == null || email == "") {
         res.status(401).json({ code: errorCode.login.EMPTYEMAIL });
     } else if (password == null || password == "") {
