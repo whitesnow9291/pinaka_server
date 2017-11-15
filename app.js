@@ -49,9 +49,7 @@ mongodb.connect(mDBConfig.pub_url, { useMongoClient: true }).then(function () {
     console.log("mongodb is connected...");
     
     Interests.find({}, function (err, interests) {
-        console.log(interests);
         if (interests.length==0) {
-            console.log("init interests collection...");
             //init interests collections
             InterestValues.map(function(value, index){
                 var newInterest = new Interests;

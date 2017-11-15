@@ -122,9 +122,9 @@ router.get('/list', function (req, res) {
     var token = req.query.token;
     var type = req.query.type;
     var page = req.query.page;
-    var perpage = req.query.perpage;
+    var perpage = Number(req.query.perpage);
     var tag = req.query.tag;
-
+    console.log(token)
     if (token == null) {
         res.status(401).json({ code: errorcode.common.EMPTYTOKEN });
     } else if (type == null) {
@@ -147,11 +147,12 @@ router.get('/list', function (req, res) {
                 res.status(401).json({ code: errorcode.common.INVALIDTOKEN });
             } else {
                 Feed.find({ $and: [{type: type }, { $or: [{heading: new RegExp(tag, "i")}, {description: new RegExp(tag, "i")}] }]}, {}, { skip : perpage * page, limit: perpage }, function (err, feeds) {
-
+console.log(typeof perpage)
                     Saved.find({contact_id: mongoose.Types.ObjectId(user._id)}, function(err, savedItem){
 
                         var newFeeds = [];
-                        for(var j = 0; j < feeds.length; j++){
+                        if (feeds) {
+                           for(var j = 0; j < feeds.length; j++){
                             var temp = JSON.parse(JSON.stringify(feeds[j]));
                             temp.isSaved = null;
                             for(var i = 0; i < savedItem.length; i++){
@@ -161,7 +162,9 @@ router.get('/list', function (req, res) {
                                 }
                             }
                             newFeeds.push(temp);
+                            } 
                         }
+                        
                         res.status(200).json(newFeeds);     
 
                     });
