@@ -125,22 +125,22 @@ router.get('/list', function (req, res) {
     var perpage = Number(req.query.perpage);
     var tag = req.query.tag;
     console.log("token=======>", token)
-    if (typeof token=="undefined") {
+    if (!token) {
         console.log("list==========>", token)
         res.status(401).json({ code: errorcode.common.EMPTYTOKEN });
-    } else if (typeof type=="undefined") {
+    } else if (!type) {
         res.status(401).json({ code: errorcode.feed.EMPTYTYPE });
     } else if (type != 0 && type != 1) {
         res.status(401).json({ code: errorcode.feed.INVALIDTYPE });
-    } else if (typeof page=="undefined") { 
+    } else if (!page) { 
         res.status(401).json({ code: errorcode.common.INVALIDPAGE });
     } else if (isNaN(page)) { 
         res.status(401).json({ code: errorcode.common.INVALIDPAGE });
-    } else if (typeof perpage=="undefined") {
+    } else if (!perpage) {
         res.status(401).json({ code: errorcode.common.INVALIDPERPAGE });
     } else if (isNaN(perpage)) { 
         res.status(401).json({ code: errorcode.common.INVALIDPERPAGE });
-    } else if(typeof tag=="undefined"){
+    } else if(!tag){
         res.status(401).json({code: 200});
     }else{
         Contact.findOne({ token: token }, function (err, user) {
