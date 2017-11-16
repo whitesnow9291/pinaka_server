@@ -79,7 +79,6 @@ router.post('/signup', function (req, res) {
     var type = req.body.type;
 
     //null validate
-    
     if (name == null || name == '') {
         res.status(401).json({ code: errorCode.signup.EMPTYNAME });
     } else if (email == null) {
@@ -197,7 +196,8 @@ router.post('/signup', function (req, res) {
                             console.log('Email sent: ' + info.response);
                         }
                         });
-
+                        
+                        console.log('sigunup success========>', contact)
                         res.status(200).json(contact);
                     });                   
                 }

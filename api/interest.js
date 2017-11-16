@@ -49,6 +49,7 @@ router.post('/insert', function (req, res) {
 router.get('/', function(req, res){
     
     Interest.find({}, function(err, interests){
+        console.log("interest=========>",interests)
         res.status(200).json(interests);
     });
 });

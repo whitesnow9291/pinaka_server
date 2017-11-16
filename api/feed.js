@@ -143,13 +143,14 @@ router.get('/list', function (req, res) {
         res.status(401).json({code: 200});
     }else{
         Contact.findOne({ token: token }, function (err, user) {
+            console.log("feed contack find result ======>", user)
             if (!user) {
                 res.status(401).json({ code: errorcode.common.INVALIDTOKEN });
             } else {
                 Feed.find({ $and: [{type: type }, { $or: [{heading: new RegExp(tag, "i")}, {description: new RegExp(tag, "i")}] }]}, {}, { skip : perpage * page, limit: perpage }, function (err, feeds) {
-console.log(typeof perpage)
+                    console.log("feed find result ======>", feeds)
                     Saved.find({contact_id: mongoose.Types.ObjectId(user._id)}, function(err, savedItem){
-
+                        console.log("Saved find result ======>", savedItem)
                         var newFeeds = [];
                         if (feeds) {
                            for(var j = 0; j < feeds.length; j++){
