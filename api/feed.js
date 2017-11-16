@@ -125,21 +125,21 @@ router.get('/list', function (req, res) {
     var perpage = Number(req.query.perpage);
     var tag = req.query.tag;
     console.log("token=======>", token)
-    if (token == null) {
+    if (!token) {
         res.status(401).json({ code: errorcode.common.EMPTYTOKEN });
-    } else if (type == null) {
+    } else if (!type) {
         res.status(401).json({ code: errorcode.feed.EMPTYTYPE });
     } else if (type != 0 && type != 1) {
         res.status(401).json({ code: errorcode.feed.INVALIDTYPE });
-    } else if (page == null) { 
+    } else if (!page) { 
         res.status(401).json({ code: errorcode.common.INVALIDPAGE });
     } else if (isNaN(page)) { 
         res.status(401).json({ code: errorcode.common.INVALIDPAGE });
-    } else if (perpage == null) {
+    } else if (!perpage) {
         res.status(401).json({ code: errorcode.common.INVALIDPERPAGE });
     } else if (isNaN(perpage)) { 
         res.status(401).json({ code: errorcode.common.INVALIDPERPAGE });
-    } else if(tag == null){
+    } else if(!tag){
         res.status(401).json({code: 200});
     }else{
         Contact.findOne({ token: token }, function (err, user) {
