@@ -302,7 +302,7 @@ router.post('/verifycode', function (req, res) {
                     } else if (!user) {
                         res.status(402).json({ code: errorCode.contact.NOTFOUND });
                     } else {
-                        res.status(200).json({ contact: user });
+                        res.status(200).json(user);
                     }
                 })
                 
