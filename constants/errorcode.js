@@ -1,4 +1,5 @@
 ﻿module.exports = {
+    SERVERERRPR: 500,
     signup: {
         EMPTYNAME: 0,
         EMPTYEMAIL: 1,
@@ -43,12 +44,13 @@
         INVALIDPAGE: 103,
         INVALIDPERPAGE: 104
     },
-
+    contact: {
+        NOTFOUND:0
+    },
     verifycode: {
         EMPTYCODE: 0,
         INVALIDCODE: 1
     },
-
     feed: {
         EMPTYHEADING: 0,
         EMPTYDESCRIPTION: 1,

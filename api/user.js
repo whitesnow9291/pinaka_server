@@ -296,7 +296,16 @@ router.post('/verifycode', function (req, res) {
             if (!item) {
                 res.status(402).json({ code: errorCode.verifycode.INVALIDCODE });
             } else {
-                res.status(200).json({ phone: item.phone });
+                Contact.findOne({phone:item.phone},function(err,user){
+                    if (err) {
+                        res.status(402).json({ code: errorCode.SERVERERRPR });
+                    } else if (!user) {
+                        res.status(402).json({ code: errorCode.contact.NOTFOUND });
+                    } else {
+                        res.status(200).json({ contact: user });
+                    }
+                })
+                
             }
         });
     }
