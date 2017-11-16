@@ -178,7 +178,7 @@ router.post('/signup', function (req, res) {
                         html += "<p>We're on a mission to make your working life simpler, more pleasant and more productive. This should be easy.</p></br>";
                         html += "<p>To get started, we need to confirm your email address, so please click this link to finish creating your account:</p></br>";
                         html +="<p>Confirm your email address</p></br>";
-                        html +="<p>We welcome your feedback, ideas and suggestions. We really want to make your life easier, so if we're falling short or should be doing something different, we want to hear about it. Send us an email at <a style='color: #f2c047'>pink.digital@gmail.com</a>.</p></br>";
+                        html +="<p>We welcome your feedback, ideas and suggestions. We really want to make your life easier, so if we're falling short or should be doing something different, we want to hear about it. Send us an email at <a style='color: #f2c047'>pinaka.digital@gmail.com</a>.</p></br>";
                         html +="<p>Thanks!</p></br>";
                         html +="<p>- The Team at Pinaka</p></div>";
 
