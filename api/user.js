@@ -286,7 +286,7 @@ router.post('/logincode', function(req, res) {
 router.post('/verifycode', function (req, res) {
     var token = req.body.token;
     var code = req.body.code;
-
+    console.log("veryfycode==========>", token+":"+code)
     if (token == null) {
         res.status(401).json({ code: errorCode.common.EMPTYTOKEN });
     } else if (code == null) {

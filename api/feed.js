@@ -126,6 +126,7 @@ router.get('/list', function (req, res) {
     var tag = req.query.tag;
     console.log("token=======>", token)
     if (!token) {
+        console.log("list==========>", token)
         res.status(401).json({ code: errorcode.common.EMPTYTOKEN });
     } else if (!type) {
         res.status(401).json({ code: errorcode.feed.EMPTYTYPE });
