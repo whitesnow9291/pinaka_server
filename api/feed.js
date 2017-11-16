@@ -124,7 +124,7 @@ router.get('/list', function (req, res) {
     var page = req.query.page;
     var perpage = Number(req.query.perpage);
     var tag = req.query.tag;
-    console.log(token)
+    console.log("token=======>", token)
     if (token == null) {
         res.status(401).json({ code: errorcode.common.EMPTYTOKEN });
     } else if (type == null) {

@@ -43,7 +43,7 @@ router.get('/profile', function (req, res) {
 router.post('/login', function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
-    console.log(email+password)
+    console.log("login=email,password====>",email+":"+password)
     if (email == null || email == "") {
         res.status(401).json({ code: errorCode.login.EMPTYEMAIL });
     } else if (password == null || password == "") {
@@ -64,7 +64,7 @@ router.post('/login', function (req, res) {
 });
 
 router.post('/signup', function (req, res) {
-    console.log(req.body);
+    console.log("signup info========>",req.body);
     var name = req.body.name;
     var email = req.body.email;
     var birthday = req.body.birthday;
@@ -191,7 +191,7 @@ router.post('/signup', function (req, res) {
 
                         transporter.sendMail(mailOptions, function(error, info){
                         if (error) {
-                            console.log(error);
+                            console.log("email error========>",error);
                         } else {
                             console.log('Email sent: ' + info.response);
                         }
@@ -247,8 +247,7 @@ router.post('/logincode', function(req, res) {
     var token = req.body.token;
     var code = req.body.code;
 
-    console.log(token);
-    console.log(code);
+    console.log("login code token,code info========>",token+":"+code);
 
     if (token == null) {
         res.status(401).json({ code: errorCode.common.EMPTYTOKEN });
@@ -402,7 +401,7 @@ router.put('/update', function (req, res) {
 
                         transporter.sendMail(mailOptions, function(error, info){
                         if (error) {
-                            console.log(error);
+                            console.log("Email err========>",error);
                         } else {
                             console.log('Email sent: ' + info.response);
                         }
@@ -450,7 +449,7 @@ router.post('/forgot', function(req, res) {
 
                 transporter.sendMail(mailOptions, function(error, info){
                 if (error) {
-                    console.log(error);
+                    console.log("Email err========>",error);
                 } else {
                     console.log('Email sent: ' + info.response);
                 }
